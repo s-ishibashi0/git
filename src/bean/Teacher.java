@@ -1,11 +1,12 @@
 package bean;
 
 public class Teacher extends School implements java.io.Serializable {
+	//属性
 	private String id;
 	private String password;
 	private String name;
 	private School school;
-
+	//セッターとゲッター
 	public String getId() {
 		return id;
 	}

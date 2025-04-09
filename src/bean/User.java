@@ -1,6 +1,7 @@
 package bean;
 
 public class User {
+	//属性
     private boolean isAuthenticated;
 
 	public boolean isAuthenticated() {
