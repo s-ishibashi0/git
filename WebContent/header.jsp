@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>得点管理システム</h1>
 </body>
 </html>
