@@ -6,26 +6,14 @@
 
 
 
-	<!-- （ここから↓）次の内容をweb.xmlに追加する -->
-<!-- 
-<filter>
-	<filter-name>hellofilter</filter-name>
-	<filter-class>chapter10.HelloFilter</filter-class>
-</filter>
-<filter-mapping>
-	<filter-name>hellofilter</filter-name>
-	<url-pattern>/chapter3/hello</url-pattern>
-</filter-mapping>
 
-<filter>
-	<filter-name>hellofilter2</filter-name>
-	<filter-class>chapter10.HelloFilter2</filter-class>
-</filter>
-<filter-mapping>
-	<filter-name>hellofilter2</filter-name>
-	<url-pattern>/chapter3/hello</url-pattern>
-</filter-mapping>
--->
-	<!-- （ここまで↑）次の内容をweb.xmlに追加する -->
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 
 </web-app>
