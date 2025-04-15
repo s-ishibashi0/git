@@ -16,7 +16,7 @@
     <%= loggedInUser != null ? loggedInUser +"様" : "" %>
 </span>
 <%if (loggedInUser != null) { %>
-	<a href="logout.jsp">ログアウト</a>
+	<a href="git/scoremanager/main/logout.jsp">ログアウト</a>
 <% } %>
 </body>
 </html>
