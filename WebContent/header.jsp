@@ -8,5 +8,15 @@
 </head>
 <body>
 <h1>得点管理システム</h1>
+<%
+    String loggedInUser = (String) session.getAttribute("userName");
+%>
+
+<span>
+    <%= loggedInUser != null ? loggedInUser +"様" : "" %>
+</span>
+<%if (loggedInUser != null) { %>
+	<a href="logout.jsp">ログアウト</a>
+<% } %>
 </body>
 </html>
