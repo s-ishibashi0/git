@@ -17,7 +17,7 @@
 			<li><a href = git/scoremanager/main/test_list.jsp>成績参照</a></li>
 		</ul>
 		</li>
-		<il><a href = git/scoremanager/main/subject_list.jsp>科目管理</a></il>
+		<li><a href = git/scoremanager/main/subject_list.jsp>科目管理</a></li>
 	</ul>
 </div>
 </body>
