@@ -4,6 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+	.sidebar ul {
+		list-style:none;
+	}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -17,7 +22,7 @@
 			<li><a href = git/scoremanager/main/test_list.jsp>成績参照</a></li>
 		</ul>
 		</li>
-		<il><a href = git/scoremanager/main/subject_list.jsp>科目管理</a></il>
+		<li><a href = git/scoremanager/main/subject_list.jsp>科目管理</a></li>
 	</ul>
 </div>
 </body>
