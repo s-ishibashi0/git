@@ -1,10 +1,9 @@
 package bean;
 
-public class School implements java.io.Serializable {
-	//属性
-	private String cd;
-	private String name;
-	//セッター
+public class School {
+	private String cd; // TODO:フィールド名の説明
+	private String name;// TODO:フィールド名の説明
+
 	public String getCd() {
 		return cd;
 	}
@@ -12,7 +11,7 @@ public class School implements java.io.Serializable {
 	public void setCd(String cd) {
 		this.cd = cd;
 	}
-	//ゲッター
+
 	public String getName() {
 		return name;
 	}
