@@ -40,10 +40,11 @@ public class EncodingFilter implements Filter {
 
 	/**
 	 * フィルタの初期化メソッド（今回は特に処理なし）。
-	 * 
+	 *
 	 * @param filterConfig
 	 *            フィルタ設定情報
 	 */
+	@Override
 	public void init(FilterConfig filterConfig) {
 	}
 
