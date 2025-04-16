@@ -12,7 +12,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<% String loggedInUser = (String) session.getAttribute("userName"); %>
 <div class = sidebar>
+	<%if (loggedInUser != null) { %>
 	<ul class = nav>
 		<li><a href = git/scoremanager/main/menu.jsp>メニュー</a></li>
 		<li><a href = git/scoremanager/main/student_list.jsp>学生管理</a></li>
@@ -24,6 +26,7 @@
 		</li>
 		<li><a href = git/scoremanager/main/subject_list.jsp>科目管理</a></li>
 	</ul>
+	<% } %>
 </div>
 </body>
 </html>
