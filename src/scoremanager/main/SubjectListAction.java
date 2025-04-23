@@ -1,12 +1,10 @@
 package scoremanager.main;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import tool.Action;
 
-<<<<<<< HEAD
-public abstract class SubjectListAction extends Action {
-
-}
-=======
 public void SubjectListAction extends Action{
 	public abstract void execute(HttpServletRequest req, HttpServletResponse res) throws Exception
 	{try{
@@ -21,4 +19,3 @@ public void SubjectListAction extends Action{
 	return "Subject_list.jsp";
 	}
 	}
->>>>>>> branch 'master' of https://github.com/s-ishibashi0/git.git
