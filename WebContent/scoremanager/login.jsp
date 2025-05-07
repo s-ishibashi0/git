@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <script>
 	function togglePasswordVisibility() {
 		const passwordInput = document.getElementById("password");
@@ -11,32 +12,44 @@
 		}
 	}
 </script>
+
 <c:import url="../base.jsp" />
+
 <h2>ログイン</h2>
-<form action="LoginAction" method="post">
+
+<form action="${pageContext.request.contextPath}/scoremanager/LoginAction" method="post">
+
+	<label for="id">ログインID</label><br />
 	<input type="text"
 		id="id"
-		name="id"
-		value="${id}"
+		name="login"
+		value="${login}"
 		placeholder="半角でご入力ください"
 		style="ime-mode: disabled;"
-		required maxlength="10">
+		required maxlength="10" /><br /><br />
+
+	<label for="password">パスワード</label><br />
 	<input type="password"
 		id="password"
 		name="password"
 		placeholder="30文字以内の半角英数字でご入力ください"
 		maxlength="30"
 		style="ime-mode: disabled;"
-		required>
+		required /><br />
+
 	<input
 		type="checkbox"
 		id="showPasswordCheckbox"
 		name="chk_d_ps"
-		onclick="togglePasswordVisibility()">
-		<label for="showPasswordCheckbox">パスワードを表示</label>
+		onclick="togglePasswordVisibility()" />
+	<label for="showPasswordCheckbox">パスワードを表示</label><br /><br />
+
 	<input
-	type="button"
-	name="login"
-	value="ログイン"
-	>
+		type="submit"
+		name="login"
+		value="ログイン" />
 </form>
+
+<c:if test="${not empty error}">
+	<p style="color:red;">${error}</p>
+</c:if>
