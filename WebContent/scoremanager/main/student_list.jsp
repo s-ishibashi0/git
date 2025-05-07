@@ -9,4 +9,5 @@
 
 	<c:param name="content">
 		<section class ="mp-4"></section>
+		<h2 class="h3" mb-3 fw-norma bg-secondry bg-opacity-10 py></h2>
 	</c:param>
