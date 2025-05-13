@@ -17,23 +17,22 @@ public class StudentDAO extends DAO {
 
 	// postFilter (学校情報を基に結果をフィルタリング)
 	public List<Student> postFilter(ResultSet rSet, School school) throws Exception {
-        List<Student> list = new ArrayList<>();
-        try{
-
-        while (rSet.next()) {
-            Student student = new Student();
-            student.setNo(rSet.getString("no"));
-            student.setName(rSet.getString("name"));
-            student.setEntYear(rSet.getInt("ent_year"));
-            student.setClassNum(rSet.getString("class_num"));
-            student.setAttend(rSet.getBoolean("is_attend"));
-            student.setSchool(school);
-            // リストに追加
-            list.add(student);
-        }
-//        ここから
-    }catch (SQLException | e) {
-		// TODO: handle exception
+		List<Student> list = new ArrayList<>();
+		try {
+			while (rSet.next()) {
+				Student student = new Student();
+				student.setNo(rSet.getString("no"));
+				student.setName(rSet.getString("name"));
+				student.setEntYear(rSet.getInt("ent_year"));
+				student.setClassNum(rSet.getString("class_num"));
+				student.setAttend(rSet.getBoolean("is_attend"));
+				student.setSchool(school);
+				list.add(student);
+			}
+		} catch (SQLException e) {
+			throw e; // 必要に応じてログ出力などに置き換え
+		}
+		return list;
 	}
 
 	// filter (学校、入学年、クラス番号、出席情報でフィルタリング)
@@ -42,7 +41,6 @@ public class StudentDAO extends DAO {
 		List<Student> students = new ArrayList<>();
 
 		try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-
 			ps.setString(1, school.getCd());
 			ps.setInt(2, entYear);
 			ps.setString(3, clasNum);
@@ -61,7 +59,6 @@ public class StudentDAO extends DAO {
 		List<Student> students = new ArrayList<>();
 
 		try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-
 			ps.setString(1, school.getCd());
 			ps.setInt(2, entYear);
 			ps.setBoolean(3, isAttend);
@@ -77,7 +74,6 @@ public class StudentDAO extends DAO {
 	public boolean save(Student student) throws Exception {
 		String sql = "INSERT INTO STUDENT (NO, NAME, ENT_YEAR, CLASS_NUM, IS_ATTEND, SCHOOL_CD) VALUES (?, ?, ?, ?, ?, ?)";
 		try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-
 			ps.setString(1, student.getNo());
 			ps.setString(2, student.getName());
 			ps.setInt(3, student.getEntYear());
