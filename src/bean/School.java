@@ -1,6 +1,8 @@
 package bean;
 
-public class School {
+import java.io.Serializable;
+
+public class School implements Serializable {
 	private String cd; // TODO:フィールド名の説明
 	private String name;// TODO:フィールド名の説明
 

@@ -1,6 +1,8 @@
 package bean;
 
-public class Teacher {
+import java.io.Serializable;
+
+public class Teacher extends User implements Serializable {
 	private String id;
 	private String password;
 	private String name;

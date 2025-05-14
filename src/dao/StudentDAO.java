@@ -36,14 +36,14 @@ public class StudentDAO extends DAO {
 	}
 
 	// filter (学校、入学年、クラス番号、出席情報でフィルタリング)
-	public List<Student> filter(School school, int entYear, String clasNum, boolean isAttend) throws Exception {
+	public List<Student> filter(School school, int entYear, String classNum, boolean isAttend) throws Exception {
 		String sql = baseSql + "SCHOOL_CD = ? AND ENT_YEAR = ? AND CLASS_NUM = ? AND IS_ATTEND = ?";
 		List<Student> students = new ArrayList<>();
 
 		try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
 			ps.setString(1, school.getCd());
 			ps.setInt(2, entYear);
-			ps.setString(3, clasNum);
+			ps.setString(3, classNum);
 			ps.setBoolean(4, isAttend);
 			ResultSet rs = ps.executeQuery();
 
@@ -84,5 +84,26 @@ public class StudentDAO extends DAO {
 			int rowsAffected = ps.executeUpdate();
 			return rowsAffected > 0; // 1件以上保存できた場合は true
 		}
+
 	}
+
+	public List<Student> filter(School school, boolean isAttend) throws Exception {
+		String sql = baseSql + "SCHOOL_CD = ? AND IS_ATTEND = ?";
+		List<Student> students = new ArrayList<>();
+
+		try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setString(1, school.getCd());
+			ps.setBoolean(2, isAttend);
+
+			try (ResultSet rs = ps.executeQuery()) {
+				students = postFilter(rs, school);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new Exception("データ取得時にエラー発生: " + e.getMessage());
+		}
+
+		return students;
+	}
+
 }
