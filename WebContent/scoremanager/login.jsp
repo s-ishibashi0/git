@@ -17,7 +17,7 @@
 
 <h2>ログイン</h2>
 
-<form action="${pageContext.request.contextPath}/scoremanager/LoginAction" method="post">
+<form action="${pageContext.request.contextPath}/scoremanager/LoginExecute.action" method="post">
 
 	<label for="id">ログインID</label><br />
 	<input type="text"
