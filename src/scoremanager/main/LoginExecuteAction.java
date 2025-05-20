@@ -20,11 +20,5 @@ public class LoginExecuteAction extends HttpServlet {
         String loginId = request.getParameter("login");
         String password = request.getParameter("password");
 
-        // ログイン処理（例：固定値での認証）
-        if ("admin".equals(loginId) && "pass123".equals(password)) {
-                       // 失敗時の処理
-            request.setAttribute("error", "ログインIDまたはパスワードが間違っています。");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
-        }
     }
 }
