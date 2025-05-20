@@ -1,21 +1,35 @@
 package scoremanager.main;
 
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Subject;
+import dao.SubjectDAO;
 import tool.Action;
 
-public void SubjectListAction extends Action{
-	public abstract void execute(HttpServletRequest req, HttpServletResponse res) throws Exception
-	{try{
-		SubjectDAO dao = new SubjectDAO();
-		List<Subject> list = dao.getAllSubjects();
-		req.setAttribute("list",list);
+public class SubjectListAction extends Action {
 
-		req.getRequestDispatcher("Subject_list.jsp").forward(req,res);
-	}catch (Exception e) {
-		e.printStackTrace();
-	}
-	return "Subject_list.jsp";
-	}
-	}
+    @Override
+    public void execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        // SubjectDAOのインスタンスを作成
+        SubjectDAO subjectDAO = new SubjectDAO();
+
+        // すべての科目を取得（学校に依存しない）
+        List<Subject> subjectList = subjectDAO.filter();
+
+        // 取得した科目リストをリクエスト属性にセット
+        req.setAttribute("subjectList", subjectList);
+
+        // JSPにフォワードして科目リストを表示
+        forward(req, resp, "/scoremanager/main/subject_list.jsp");
+    }
+
+    // forwardメソッドを定義
+    private void forward(HttpServletRequest req, HttpServletResponse resp, String path) throws Exception {
+        RequestDispatcher dispatcher = req.getRequestDispatcher(path);
+        dispatcher.forward(req, resp);
+    }
+}
