@@ -1,4 +1,4 @@
-package scoremanager.main;
+package scoremanager;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
