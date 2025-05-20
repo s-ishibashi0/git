@@ -1,24 +1,38 @@
 package scoremanager.main;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/scoremanager/LoginExecute.action")
-public class LoginExecuteAction extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+import bean.Teacher;
+import dao.TeacherDAO;
+import tool.Action;
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+public class LoginExecuteAction extends Action {
+    public void execute(
+        HttpServletRequest request, HttpServletResponse response
+    ) throws Exception {
 
-        // フォームから送られた値を取得
-        String loginId = request.getParameter("login");
+        HttpSession session = request.getSession();
+
+        String login = request.getParameter("login");
         String password = request.getParameter("password");
 
+        TeacherDAO dao = new TeacherDAO();
+        Teacher teacher = dao.login(login, password);
+
+        String page;
+
+        if (teacher != null) {
+            session.setAttribute("teacher", teacher);
+            page = "login-out.jsp";
+        } else {
+            request.setAttribute("error", "ログインIDまたはパスワードが正しくありません。");
+            page = "login-error.jsp";
+        }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+        dispatcher.forward(request, response);
     }
 }
